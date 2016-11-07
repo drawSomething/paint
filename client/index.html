@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<title>你画我猜</title>
+	<link rel="stylesheet" type="text/css" href="media/css/style.css">
+
+
+</head>
+<body ontouchstart>
+<div class="container">
+	<canvas class="mycanvas" width="320px" height="320px" id="drawCanvas"></canvas>
+</div>
+<script type="text/javascript" src="media/js/script.js"></script>
+<script type="text/javascript" src="media/js/socket.io-1.2.0.js"></script>
+<script type="text/javascript">
+	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); }); 
+	document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
+
+	var socket= io('http://localhost:3000');
+
+	Draw.init({ele:'drawCanvas',socket:socket,type:'owner'});
+
+</script>
+</body>
+</html>
